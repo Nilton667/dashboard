@@ -1,0 +1,30 @@
+{
+    "name"    : "Dashboard",
+    "version" : "0.0.2",
+    "language": {
+        "pt"  : true
+    },
+    "modulo": {
+        "anuncio"   : false,
+        "agenda"    : false,
+        "blog"      : false,
+        "curso"     : false,
+        "loja"      : true,
+        "imoveis"   : false,
+        "chatbox"   : true,
+        "servicos"  : false,
+        "usuarios"  : true,
+        "uber"      : true,
+        "galeria"   : false,
+        "transmicao": true,
+        "cronometro": false,
+        "turismo"   : true,
+        "feedback"  : true,
+        "newsletter": true,
+        "signUp"    : true,
+        "pagamento" : true,
+        "deliver"   : false
+    },
+    "author": "Nilton Manuel",
+    "license": "MIT"
+}
