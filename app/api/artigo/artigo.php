@@ -15,6 +15,9 @@ Class Artigo{
     //PASTA
     private $folder = '../../../../publico/img/artigos/';
 
+    //Precos
+    private $id_artigo, $id_usuario, $localizacao, $latitude, $longitude;
+
 	function __construct()
 	{
         $this->id = Components\getSession('maestro_adm', 'id', 1,  true);
@@ -71,6 +74,27 @@ Class Artigo{
         $this->estado     = is_numeric(post('estado', false))
         ? filterInt(post('estado'), 0)  
         : DEFAULT_INT;
+
+        //Precos
+        $this->id_artigo    = is_numeric(post('id_artigo', false))
+        ? filterInt(post('id_artigo'), 0)  
+        : DEFAULT_INT;
+        
+        $this->id_usuario   = is_numeric(post('id_usuario', false))
+        ? filterInt(post('id_usuario'), 0)  
+        : DEFAULT_INT;
+        
+        $this->localizacao  = post('localizacao', false)
+        ? filterVar(post('localizacao'))  
+        : '';
+        
+        $this->latitude =  post('latitude', false)
+        ? filterVar(post('latitude'))  
+        : 0;
+        
+        $this->longitude  =  post('longitude', false)
+        ? filterVar(post('longitude'))  
+        : -0;
 
 	}
 
@@ -282,6 +306,73 @@ Class Artigo{
 
     }
 
+    function addPreco()
+    {
+        $insert = DB\Mysql::insert(
+            "INSERT INTO artigos_precos (id_artigo, id_usuario, nome, localizacao, latitude, longitude, registo) VALUES (:id_artigo, :id_usuario, :nome, :localizacao, :latitude, :longitude, :registo)",
+            [
+                'id_artigo'   =>$this->id_artigo, 
+                'id_usuario'  =>$this->id_usuario, 
+                'nome'        =>$this->nome, 
+                'localizacao' =>$this->localizacao, 
+                'latitude'    =>$this->latitude.' ', 
+                'longitude'   =>$this->longitude.' ', 
+                'registo'     =>$this->registo
+            ]
+        );
+
+        if(is_numeric($insert) && $insert > 0){
+            return 1;
+        }else{
+            return $insert;
+        }
+    }
+
+    function editPreco()
+    {
+        $id = is_numeric(post('id', false))
+        ? filterInt(post('id'), 0)  
+        : DEFAULT_INT;
+
+        $update = DB\Mysql::update(
+            "UPDATE artigos_precos SET nome = :nome, localizacao = :localizacao, latitude = :latitude, longitude = :longitude, preco = :preco WHERE id = :id",
+            [
+                'id'          =>$id, 
+                'nome'        =>$this->nome, 
+                'localizacao' =>$this->localizacao, 
+                'latitude'    =>$this->latitude.' ', 
+                'longitude'   =>$this->longitude.' ',
+                'preco'       =>$this->preco
+            ]
+        );
+
+        if(is_numeric($update) && $update > 0){
+            return 1;
+        }else{
+            return $update;
+        }
+    }
+
+    function removePreco()
+    {
+        $id = is_numeric(post('id', false))
+        ? filterInt(post('id'), 0)  
+        : DEFAULT_INT;
+
+        $delete = DB\Mysql::delete(
+            "DELETE FROM artigos_precos WHERE id = :id",
+            [
+                'id' =>$id, 
+            ]
+        );
+
+        if(is_numeric($delete) && $delete > 0){
+            return 1;
+        }else{
+            return $delete;
+        }
+    }
+
 }
 
 if(post('set_artigo')):
@@ -318,6 +409,24 @@ elseif(post('change_image')):
     
     $data = new Artigo();
     eco($data->changeImage(), true);
+    exit();
+
+elseif(post('add_preco')):
+
+    $data = new Artigo();
+    eco($data->addPreco(), true);
+    exit();
+
+elseif(post('remove_preco')):
+
+    $data = new Artigo();
+    eco($data->removePreco(), true);
+    exit();
+
+elseif(post('editar_preco')):
+
+    $data = new Artigo();
+    eco($data->editPreco(), true);
     exit();
 
 endif;
