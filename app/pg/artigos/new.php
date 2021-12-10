@@ -142,7 +142,7 @@
 									<input onchange="fileName(this.value)" type="file" class="custom-file-input" id="image" name="img[]">
 									<label id="input-file-label" class="custom-file-label" for="image">Escolher arquivo(s)</label>
 								</div>
-								<div class="input-group-append" data-toggle="tooltip" title="Visualizar">
+								<div class="input-group-append" data-bs-toggle="tooltip" title="Visualizar">
 									<button id="visualizar-imagem" class="btn btn-outline-secondary" type="button"><i class="las la-eye"></i></button>
 								</div>
 								</div>
@@ -361,42 +361,48 @@
 							</select>
 						</div>
 					</div>
-
-					<div class="col-12">
-						<div class="mb-2">	
-							<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#add-preco-modal"><i class="las la-plus"></i> Preços personalizados</button>
-						</div>
-						<div class="mb-3">
-							<?php
-								$select_preco = DB\Mysql::select('SELECT * FROM artigos_precos WHERE id_artigo = :id_artigo', 
-									[
-										'id_artigo' => $data[0]->id,
-									]
-								);
-
-								if(is_array($select_preco)){
-									foreach ($select_preco as $key => $value) {
-										?>
-										<div class="card" style="border: #ebe9ee 1px solid;">
-											<div class="card-body">
-											<h5 class="card-title"><?= $value['nome']; ?></h5>
-												<h6 class="card-subtitle text-muted"><?= $value['localizacao']; ?></h6>
-												<p class="card-text">Lat: <?= $value['latitude']; ?>, Long: <?= $value['longitude']; ?></p>
-												<p class="card-text"><b>Preço: <?php echo get_moeda($value['preco']); ?></b></p>
-												<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#remove-preco-modal-<?= $value['id']; ?>"><i class="las la-trash"></i> Eliminar</button>
-												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editar-preco-modal-<?= $value['id']; ?>"><i class="las la-pencil-alt"></i> Editar</button>
-											</div>
-										</div>
-										<?php
-									}
-								}else{
-									?>
-									<p class="lead">Este artigo não possui um preço personalizado!</p>
-									<?php
-								}
+					
+					<?php
+						if($edit){
 							?>
-						</div>
-					</div>
+							<div class="col-12">
+								<div class="mb-2">	
+									<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add-preco-modal"><i class="las la-plus"></i> Preços personalizados</button>
+								</div>
+								<div class="mb-3">
+									<?php
+										$select_preco = DB\Mysql::select('SELECT * FROM artigos_precos WHERE id_artigo = :id_artigo', 
+											[
+												'id_artigo' => $data[0]->id,
+											]
+										);
+
+										if(is_array($select_preco)){
+											foreach ($select_preco as $key => $value) {
+												?>
+												<div class="card" style="border: #ebe9ee 1px solid;">
+													<div class="card-body">
+													<h5 class="card-title"><?= $value['nome']; ?></h5>
+														<h6 class="card-subtitle text-muted"><?= $value['localizacao']; ?></h6>
+														<p class="card-text">Lat: <?= $value['latitude']; ?>, Long: <?= $value['longitude']; ?></p>
+														<p class="card-text"><b>Preço: <?php echo get_moeda($value['preco']); ?></b></p>
+														<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#remove-preco-modal-<?= $value['id']; ?>"><i class="las la-trash"></i> Eliminar</button>
+														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editar-preco-modal-<?= $value['id']; ?>"><i class="las la-pencil-alt"></i> Editar</button>
+													</div>
+												</div>
+												<?php
+											}
+										}else{
+											?>
+											<p class="lead">Este artigo não possui um preço personalizado!</p>
+											<?php
+										}
+									?>
+								</div>
+							</div>
+							<?php
+						}
+					?>
 
 				</div>
 
@@ -417,7 +423,7 @@
 </div>
 
 <?php
-	if(is_array($select_preco)){
+	if(isset($select_preco) && is_array($select_preco)){
 		foreach ($select_preco as $key => $value) {
 		?>
 			<!-- remover preco -->
