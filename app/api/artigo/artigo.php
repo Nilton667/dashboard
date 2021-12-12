@@ -16,7 +16,7 @@ Class Artigo{
     private $folder = '../../../../publico/img/artigos/';
 
     //Precos
-    private $id_artigo, $id_usuario, $localizacao, $latitude, $longitude, $link;
+    private $id_artigo, $id_usuario, $localizacao, $latitude, $longitude;
 
 	function __construct()
 	{
@@ -95,10 +95,6 @@ Class Artigo{
         $this->longitude  =  post('longitude', false)
         ? filterVar(post('longitude'))  
         : -0;
-
-        $this->link  =  post('link', false)
-        ? filterVar(post('link'))  
-        : '';
 
 	}
 
@@ -313,16 +309,14 @@ Class Artigo{
     function addPreco()
     {
         $insert = DB\Mysql::insert(
-            "INSERT INTO artigos_precos (id_artigo, id_usuario, nome, localizacao, latitude, longitude, preco, link, registo) VALUES (:id_artigo, :id_usuario, :nome, :localizacao, :latitude, :longitude, :preco, :link, :registo)",
+            "INSERT INTO artigos_precos (id_artigo, id_usuario, nome, localizacao, latitude, longitude, registo) VALUES (:id_artigo, :id_usuario, :nome, :localizacao, :latitude, :longitude, :registo)",
             [
                 'id_artigo'   =>$this->id_artigo, 
                 'id_usuario'  =>$this->id_usuario, 
                 'nome'        =>$this->nome, 
                 'localizacao' =>$this->localizacao, 
                 'latitude'    =>$this->latitude.' ', 
-                'longitude'   =>$this->longitude.' ',
-                'preco'       =>$this->preco,
-                'link'        =>$this->link, 
+                'longitude'   =>$this->longitude.' ', 
                 'registo'     =>$this->registo
             ]
         );
@@ -341,15 +335,14 @@ Class Artigo{
         : DEFAULT_INT;
 
         $update = DB\Mysql::update(
-            "UPDATE artigos_precos SET nome = :nome, localizacao = :localizacao, latitude = :latitude, longitude = :longitude, preco = :preco, link = :link WHERE id = :id",
+            "UPDATE artigos_precos SET nome = :nome, localizacao = :localizacao, latitude = :latitude, longitude = :longitude, preco = :preco WHERE id = :id",
             [
                 'id'          =>$id, 
                 'nome'        =>$this->nome, 
                 'localizacao' =>$this->localizacao, 
                 'latitude'    =>$this->latitude.' ', 
                 'longitude'   =>$this->longitude.' ',
-                'preco'       =>$this->preco,
-                'link'        =>$this->link
+                'preco'       =>$this->preco
             ]
         );
 

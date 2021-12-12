@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 08-Dez-2021 às 00:50
+-- Tempo de geração: 09-Dez-2021 às 02:07
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 7.4.25
 
@@ -126,7 +126,9 @@ INSERT INTO `acesso` (`id`, `id_adm`, `token`, `dispositivo`, `tempo`, `registo`
 (182, 8, 'f729c443d56d3c7b3306b99b2e60819e499e2e8f', 'Netscape', '19/11/2021', '19/11/2021'),
 (183, 8, '8c8070d28750077b2d0af92adefe469362b524b8', 'Netscape', '20/11/2021', '20/11/2021'),
 (184, 8, '4579c5118077266620f963595df9a271563078d4', 'Netscape', '21/11/2021', '21/11/2021'),
-(185, 8, 'b75d5585876f05983da8c6ac9d8b27db212fdd60', 'Netscape', '07/12/2021', '07/12/2021');
+(185, 8, 'b75d5585876f05983da8c6ac9d8b27db212fdd60', 'Netscape', '07/12/2021', '07/12/2021'),
+(186, 8, '0aabdec2acf997ae457a07070eb8157281d36c71', 'Netscape', '08/12/2021', '08/12/2021'),
+(187, 8, 'ad78deedbe5f1a81909ab087c2f3a859b7426851', 'Netscape', '09/12/2021', '09/12/2021');
 
 -- --------------------------------------------------------
 
@@ -294,12 +296,25 @@ INSERT INTO `artigos_imagem` (`id`, `id_artigo`, `imagem`, `registo`) VALUES
 CREATE TABLE `artigos_precos` (
   `id` bigint(100) NOT NULL,
   `id_artigo` bigint(100) DEFAULT 0,
+  `id_usuario` bigint(100) DEFAULT 0,
   `nome` varchar(200) DEFAULT '',
   `localizacao` longtext DEFAULT '',
   `latitude` double DEFAULT 0,
   `longitude` double DEFAULT 0,
+  `preco` double DEFAULT 0,
   `registo` varchar(200) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `artigos_precos`
+--
+
+INSERT INTO `artigos_precos` (`id`, `id_artigo`, `id_usuario`, `nome`, `localizacao`, `latitude`, `longitude`, `preco`, `registo`) VALUES
+(5, 4, 8, 'n/a', '', 0, 0, 0, '08/12/2021'),
+(10, 4, 8, 'Nilton Manuel', 'Nova Vida', 0, 0, 0, '09/12/2021'),
+(11, 4, 8, 'Nilton', 'Nova Vida', 0, 0, 0, '09/12/2021'),
+(12, 4, 8, 'Nilton Domingos', 'Nova Vida', 0, 0, 0, '09/12/2021'),
+(13, 4, 8, 'Nilton', 'Nova Vida', 0, 0, 0, '09/12/2021');
 
 -- --------------------------------------------------------
 
@@ -3399,7 +3414,9 @@ ALTER TABLE `artigos_imagem`
 -- Índices para tabela `artigos_precos`
 --
 ALTER TABLE `artigos_precos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_artigo` (`id_artigo`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Índices para tabela `banheiros`
@@ -3686,7 +3703,7 @@ ALTER TABLE `visitas`
 -- AUTO_INCREMENT de tabela `acesso`
 --
 ALTER TABLE `acesso`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
 
 --
 -- AUTO_INCREMENT de tabela `adm`
@@ -3728,7 +3745,7 @@ ALTER TABLE `artigos_imagem`
 -- AUTO_INCREMENT de tabela `artigos_precos`
 --
 ALTER TABLE `artigos_precos`
-  MODIFY `id` bigint(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `banheiros`

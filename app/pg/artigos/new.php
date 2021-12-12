@@ -386,13 +386,6 @@
 														<h6 class="card-subtitle text-muted"><?= $value['localizacao']; ?></h6>
 														<p class="card-text">Lat: <?= $value['latitude']; ?>, Long: <?= $value['longitude']; ?></p>
 														<p class="card-text"><b>Preço: <?php echo get_moeda($value['preco']); ?></b></p>
-														<?php
-														if(!empty($value['link'])){
-															?>
-																<a target="_blank" class="btn btn-dark" style="color: #fff;" href="<?= $value['link']; ?>">Ir á loja</a>
-															<?php
-															}
-														?>
 														<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#remove-preco-modal-<?= $value['id']; ?>"><i class="las la-trash"></i> Eliminar</button>
 														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editar-preco-modal-<?= $value['id']; ?>"><i class="las la-pencil-alt"></i> Editar</button>
 													</div>
@@ -506,11 +499,6 @@
 									<input type="number" class="form-control" id="edit-preco-preco-<?= $value['id']; ?>" name="preco" value="<?= $value['preco']; ?>">
 								</div>
 
-								<div class="form-group">
-									<label for="preco-preco">Url do artigo (opcional)</label>
-									<input type="url" class="form-control" id="edit-preco-link" name="link" placeholder="https://inovatis.ao/artigo/1" value="<?= $value['link']; ?>">
-								</div>
-
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -570,11 +558,6 @@
 				<div class="form-group">
 					<label for="preco-preco">Preço</label>
 					<input type="number" class="form-control" id="preco-preco" name="preco" value="0">
-				</div>
-
-				<div class="form-group">
-					<label for="preco-preco">Url do artigo (opcional)</label>
-					<input type="url" class="form-control" id="preco-link" name="link" placeholder="https://inovatis.ao/artigo/1">
 				</div>
 				
 			</div>
