@@ -25,13 +25,13 @@
                             <div class="limited-area">
                                 <center>
                                     <a style="cursor: default!important;" 
-                                    <?php if(isset($_GET['edit'])){ echo 'data-toggle="modal" data-target="#photo-modal"'; } ?>>
+                                    <?php if(isset($_GET['edit'])){ echo 'data-bs-toggle="modal" data-bs-target="#photo-modal"'; } ?>>
                                         <img id="userData-image"
                                         class="perfil-image rounded-circle <?php if(isset($_GET['edit'])): echo "pointer"; endif; ?>"
                                         src="assets/img/perfil/<?php echo isset($userData->imagem) && is_file('assets/img/perfil/'.$userData->imagem) ? $userData->imagem : 'user.png'; ?>"
                                         <?php 
                                             if(isset($_GET['edit'])):
-                                                echo 'data-toggle="tooltip" data-placement="top" title="Toque para alterar"'; 
+                                                echo 'data-bs-toggle="tooltip" data-placement="top" title="Toque para alterar"'; 
                                             endif;
                                         ?>
                                     >
@@ -108,7 +108,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <a data-toggle="modal" data-target="#update-senha" href="javascript:void('senha')">Altera senha?</a>
+                                        <a data-bs-toggle="modal" data-bs-target="#update-senha" href="javascript:void('senha')">Altera senha?</a>
                                     </div>
                                     <div class="col-12 mt-1">
                                         <div class="text-right">

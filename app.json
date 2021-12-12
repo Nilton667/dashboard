@@ -5,25 +5,25 @@
         "pt"  : true
     },
     "modulo": {
-        "anuncio"   : false,
-        "agenda"    : false,
-        "blog"      : false,
+        "anuncio"   : true,
+        "agenda"    : true,
+        "blog"      : true,
         "curso"     : false,
         "loja"      : true,
         "imoveis"   : false,
         "chatbox"   : true,
         "servicos"  : false,
         "usuarios"  : true,
-        "uber"      : true,
+        "uber"      : false,
         "galeria"   : false,
-        "transmicao": true,
+        "transmicao": false,
         "cronometro": false,
-        "turismo"   : true,
+        "turismo"   : false,
         "feedback"  : true,
         "newsletter": true,
         "signUp"    : true,
         "pagamento" : true,
-        "deliver"   : false
+        "deliver"   : true
     },
     "author": "Nilton Manuel",
     "license": "MIT"

@@ -39,7 +39,7 @@
                                 <div class="card m-0" style="border: #c9c9c9 1px solid;">
                                   <div style="background-color: #ebe9ee;" class="card-header p-1" id="heading<?= $value['id'] ?>">
                                     <h5 class="mb-0">
-                                      <button class="btn btn-link text-primary" type="button" data-toggle="collapse" data-target="#collapse<?= $value['id'] ?>" aria-expanded="true" aria-controls="collapse<?= $value['id'] ?>">
+                                      <button class="btn btn-link text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $value['id'] ?>" aria-expanded="true" aria-controls="collapse<?= $value['id'] ?>">
                                         <?= $value['titulo']; ?>
                                       </button>
                                     </h5>

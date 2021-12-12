@@ -14,7 +14,7 @@
                     <div class="heading-elements-ignore d-flex justify-content-end">
                         <ul class="list-inline mb-0">
                             <li>
-                                <a id="modal-add" data-toggle="modal" data-target="#modal-add-item" class="mr-2">
+                                <a id="modal-add" data-bs-toggle="modal" data-bs-target="#modal-add-item" class="mr-2">
                                     <i class="ft-plus"></i>
                                 </a>
                             </li>

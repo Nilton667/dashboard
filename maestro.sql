@@ -833,7 +833,7 @@ INSERT INTO `fatura` (`id`, `nome_do_cliente`, `contacto`, `morada`, `nif`, `des
 (44, 'Nilton Manuel', '935074974', 'Rua Ã‰ bairro palanca', '', '', '', 0, 1, 0, '', '2104092021112746', 21, 0, '', 0, 150000, '', '04/09/2021 Ã s 11:27'),
 (45, 'Nilton Manuel', '935074974', 'Rua Ã‰ bairro palanca', '', '', '', 0, 1, 0, '', '2104092021112828', 21, 0, '', 0, 200000, '', '04/09/2021 Ã s 11:28'),
 (46, 'Nilton Manuel', 'n/a', 'n/a', '', '', '', 0, 0, 0, '', '2003102021155442', 20, 0, '', 0, 200000, '', '03/10/2021 às 15:54'),
-(47, 'Nilton Manuel', '923551444', 'Luanda Anngola', '', '', '', 0, 0, 0, '', '2003102021155853', 20, 0, '', 0, 200000, '', '03/10/2021 às 15:58');
+(47, 'Nilton Manuel', '935074974', 'Luanda Anngola', '', '', '', 0, 0, 0, '', '2003102021155853', 20, 0, '', 0, 200000, '', '03/10/2021 às 15:58');
 
 -- --------------------------------------------------------
 
@@ -1458,7 +1458,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `imagem`, `identificacao`, `nacionalidade`, `morada`, `telemovel`, `genero`, `data_nascimento`, `registo`, `senha`, `cashe`, `checkCashe`, `authorization`, `saldo`, `id_facebook`, `id_goolge`) VALUES
 (2, 'Nilton', 'TomÃ©', 'nilton667@rubro.com', '150221145711334.jpg', '0075864LA895', 'Angola', 'Luanda angola rua E bairro palanca 4', '244935074974', 'M', NULL, '26/10/2020', '$2y$10$NdFvSe8WYk.CE20F4dDO5e1pjjvmrQ/y1S3ckioFT26FaJe7v6XPW', '375927', '375927', 'ae40b8978ab28f5a0410c0ba8e09a12e8d6ef3c2', 0, 0, 0),
 (3, 'Nilton', 'Angola', 'geral@rubro.ao', '23072123560323.jpg', '', 'Angola', 'Luanda Angola', '935047474', 'M', NULL, '16/07/2021', '$2y$10$kHqs6o3.ilt.V0ttaIEJAuQESQebLpz/Cch.yXY7BZ0lswv5BtMXC', '282432', NULL, 'fae4cdd9ccc940db3b3328c25be8f2426f125967', 0, 0, 0),
-(20, 'Nilton', 'Manuel', 'nilton667@gmail.com', '', '', 'Angola', 'Luanda Anngola', '923551444', 'M', '', '04/09/2021', '', '482188', '482188', 'e372045929343967d67445ecc5a1d6a133c8afaa', 0, 3161463780791235, 0),
+(20, 'Nilton', 'Manuel', 'nilton667@gmail.com', '', '', 'Angola', 'Luanda Anngola', '935074974', 'M', '', '04/09/2021', '', '482188', '482188', 'e372045929343967d67445ecc5a1d6a133c8afaa', 0, 3161463780791235, 0),
 (21, 'Nilton', 'Manuel', 'nilton.manuel@rubro.ao', '', '', 'Angola', 'Rua Ã‰ bairro palanca', '935074974', 'M', '', '04/09/2021', '$2y$10$t7dMGEzIeywDTPqctWAAyuZ47gxkidLJrU3Dbn8femqqGcFIgoBfe', '880252', '', 'f5dacb6c36c1cee6bc65fe7872cd96a83010d635', 0, 0, 0);
 
 -- --------------------------------------------------------

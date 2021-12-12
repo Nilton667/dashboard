@@ -114,7 +114,7 @@ if(isset($_GET['edit'])){
 								<input onchange="fileName(this.value)" type="file" class="custom-file-input" id="image" name="img[]">
 								<label id="input-file-label" class="custom-file-label" for="image">Escolher arquivo(s)</label>
 							</div>
-							<div class="input-group-append" data-toggle="tooltip" title="Visualizar">
+							<div class="input-group-append" data-bs-toggle="tooltip" title="Visualizar">
 								<button id="visualizar-imagem" class="btn btn-outline-secondary" type="button">
 									<i class="las la-eye"></i>
 								</button>

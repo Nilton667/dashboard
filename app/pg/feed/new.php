@@ -119,7 +119,7 @@
 								<input onchange="fileName(this.value)" type="file" class="custom-file-input" id="image" name="img[]">
 								<label id="input-file-label" class="custom-file-label" for="image">Escolher arquivo(s)</label>
 							</div>
-							<div class="input-group-append" data-toggle="tooltip" title="Visualizar">
+							<div class="input-group-append" data-bs-toggle="tooltip" title="Visualizar">
 								<button id="visualizar-imagem" class="btn btn-outline-secondary" type="button">
 									<i class="las la-eye"></i>
 								</button>
@@ -144,7 +144,7 @@
 						<label>Youtube</label>
 						<div class="input-group mb-3">
 						<input type="url" class="form-control" placeholder="Link do seu video aqui" id="youtube" name="youtube" value="<?php if($edit){ echo $data[0]->youtube; } ?>">
-							<div class="input-group-append" data-toggle="tooltip" title="Testar">
+							<div class="input-group-append" data-bs-toggle="tooltip" title="Testar">
 								<button id="video-test" class="btn btn-outline-secondary" type="button">
 									<i class="lab la-youtube"></i>
 								</button>

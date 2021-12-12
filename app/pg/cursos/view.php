@@ -11,7 +11,7 @@
 			?>
 				<div class="m-auto" style="width: 750px; max-width: 100%;">
 					<div class="text-right">
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-new-delete">
+						<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-new-delete">
 							<i class="las la-trash"></i>
 						</button>
 						<button class="btn btn-primary" onclick="location.href='./?cursos&edit=<?php echo $data[0]->id; ?>'">

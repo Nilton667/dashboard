@@ -13,7 +13,7 @@
                 	<div class="container">
                     <div class="heading-elements-ignore d-flex justify-content-end">
                         <ul class="list-inline mb-0">
-							<li><a id="modal-add" data-toggle="modal" data-target="#modal-new-user" class="mr-2"><i class="ft-plus"></i></a></li>
+							<li><a id="modal-add" data-bs-toggle="modal" data-bs-target="#modal-new-user" class="mr-2"><i class="ft-plus"></i></a></li>
                         	<li><a id="modal-delete" class="mr-2"><i class="ft-trash"></i></a></li>
                             <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
                         </ul>

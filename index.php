@@ -112,7 +112,7 @@
                 <a id="ft-maximize" class="nav-link nav-link-expand" href="javascript:void(0)"><i class="ficon ft-maximize"></i></a>
               </li>
               <li class="nav-item dropdown navbar-search">
-                <a class="nav-link dropdown-toggle hide" data-toggle="dropdown" href="#">
+                <a class="nav-link dropdown-toggle hide" data-bs-toggle="dropdown" href="#">
                   <i class="ficon ft-search"></i>
                 </a>
                 <ul class="dropdown-menu">
@@ -133,7 +133,7 @@
             </ul>
             <ul class="nav navbar-nav float-right">         
               <li class="dropdown dropdown-language nav-item">
-                <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="flag-icon flag-icon-pt"></i><span class="selected-language"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown-flag">
@@ -202,7 +202,7 @@
                 if($userData->cashe != $userData->checkCashe){
                   ?>
                   <li class="dropdown dropdown-notification nav-item">
-                    <a class="nav-link nav-link-label link-bell" data-toggle="modal" data-target="#verify_account">
+                    <a class="nav-link nav-link-label link-bell" data-bs-toggle="modal" data-bs-target="#verify_account">
                       <i class="ficon ft-alert-circle" style="color: #ff0000;"></i>
                     </a>
                   </li>
@@ -210,7 +210,7 @@
                 }
               ?>
               <li class="dropdown dropdown-user nav-item">
-                <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:void(0)" data-toggle="dropdown">             
+                <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:void(0)" data-bs-toggle="dropdown">             
                   <span class="avatar avatar-online">
                     <img class="perfil-nav-image" id="userData-image" src="assets/img/perfil/<?= isset($userData->imagem) && is_file('assets/img/perfil/'.$userData->imagem) ? $userData->imagem : 'user.png'; ?>" alt="avatar"><i></i>
                   </span>

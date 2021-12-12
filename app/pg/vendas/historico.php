@@ -117,7 +117,7 @@
 													</div>
 
                                                     <i class="las la-info-circle"
-                                                    data-toggle="modal" data-target="#visualizar-fatura<?php echo $value['id']; ?>"
+                                                    data-bs-toggle="modal" data-bs-target="#visualizar-fatura<?php echo $value['id']; ?>"
                                                     data-id="<?php echo $value['id']; ?>"></i>
                                                     
 												</div>
@@ -252,7 +252,7 @@
                                         <?php
                                         }
                                     ?>
-                                    <p class="mb-3 text-right red-text">
+                                    <p class="mb-3 text-right theme-color">
                                         <b>
                                             <?php
                                             if($value['estado'] == 1){

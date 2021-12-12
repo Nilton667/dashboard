@@ -164,7 +164,7 @@
 
       // Dropdown submenu on small screen on click
       // --------------------------------------------------
-      $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+      $('ul.dropdown-menu [data-bs-toggle=dropdown]').on('click', function(event) {
         if($(this).siblings('ul.dropdown-menu').length > 0){
           event.preventDefault();
         }
@@ -335,7 +335,7 @@
 
         // Dropdown submenu on small screen on click
         // --------------------------------------------------
-        $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+        $('ul.dropdown-menu [data-bs-toggle=dropdown]').on('click', function(event) {
           event.preventDefault();
           event.stopPropagation();
           $(this).parent().siblings().removeClass('open');

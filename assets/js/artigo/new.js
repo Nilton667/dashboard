@@ -549,6 +549,252 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 
+    //Adicionar preco
+    $('#add-preco').click(function(){
+
+        if(permitir == 0){
+            permitir = 1;
+        }else{
+            return;
+        }
+
+        var nome        = document.querySelector('#preco-nome');
+        var localizacao = document.querySelector('#preco-localizacao');
+        var preco       = document.querySelector('#preco-preco');
+
+        if(nome.value.trim() == ''){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Insira um nome valido!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            nome.focus();
+            permitir = 0;
+            return;
+        }else if(localizacao.value.trim() == ''){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Insira uma localização valida!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            localizacao.focus();
+            permitir = 0;
+            return;
+        }else if(preco.value.trim() == ''){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Insira um preço valido!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            preco.focus();
+            permitir = 0;
+            return;
+        }
+
+        $('#add-preco-form').ajaxForm({
+        uploadProgress: function (event, position, total, percentComplete) {
+            load();
+        },
+        success: function(data){
+            if (data == 1){
+                location.reload();
+                return;
+            }else if(data == 0){
+                $.toast({
+                    heading: 'Alerta',
+                    text: 'Não foi possível finalizar o seu pedido!',
+                    showHideTransition: 'fade',
+                    icon: 'error',
+                    loader: true,
+                });
+            }else{
+                $.toast({
+                    heading: 'Alerta',
+                    text: data,
+                    showHideTransition: 'fade',
+                    icon: 'error',
+                    loader: true,
+                });
+            }
+            onload();
+            permitir = 0;
+        },
+        error: function(err){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Ocorreu um problema de rede tente novamente mais tarde!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            onload();
+            permitir = 0;
+        },
+        dataType: 'json',
+        url : 'app/api/artigo/artigo',
+        resetForm: false
+        }).submit();
+    });
+
+    //Editar preco
+    $('.edit-preco').click(function(){
+
+        if(permitir == 0){
+            permitir = 1;
+        }else{
+            return;
+        }
+
+        let id = $(this).attr('data-id');
+
+        var nome        = document.querySelector('#edit-preco-nome-'+id);
+        var localizacao = document.querySelector('#edit-preco-localizacao-'+id);
+        var preco       = document.querySelector('#edit-preco-preco-'+id);
+
+        if(nome.value.trim() == ''){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Insira um nome valido!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            nome.focus();
+            permitir = 0;
+            return;
+        }else if(localizacao.value.trim() == ''){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Insira uma localização valida!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            localizacao.focus();
+            permitir = 0;
+            return;
+        }else if(preco.value.trim() == ''){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Insira um preço valido!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            preco.focus();
+            permitir = 0;
+            return;
+        }
+
+        load();
+
+        $('#edit-preco-form-'+id).ajaxForm({
+        uploadProgress: function (event, position, total, percentComplete) {
+            load();
+        },
+        success: function(data){
+            if (data == 1){
+                location.reload();
+                return;
+            }else if(data == 0){
+                $.toast({
+                    heading: 'Alerta',
+                    text: 'Não foi possível finalizar o seu pedido!',
+                    showHideTransition: 'fade',
+                    icon: 'error',
+                    loader: true,
+                });
+            }else{
+                $.toast({
+                    heading: 'Alerta',
+                    text: data,
+                    showHideTransition: 'fade',
+                    icon: 'error',
+                    loader: true,
+                });
+            }
+            onload();
+            permitir = 0;
+        },
+        error: function(err){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Ocorreu um problema de rede tente novamente mais tarde!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            onload();
+            permitir = 0;
+        },
+        dataType: 'json',
+        url : 'app/api/artigo/artigo',
+        resetForm: false
+        }).submit();
+    });
+
+    //remover preco
+    $(document).on('click', '.remove-preco', function(){
+
+        if(permitir == 0){
+            permitir = 1;
+        }else{
+            return;
+        }
+
+        load();
+
+        $('#remove-preco-form-'+$(this).attr('data-id')).ajaxForm({
+        uploadProgress: function (event, position, total, percentComplete) {
+            load();
+        },
+        success: function(data){
+            if (data == 1){
+                location.reload();
+                return;
+            }else if(data == 0){
+                $.toast({
+                    heading: 'Alerta',
+                    text: 'Não foi possível finalizar o seu pedido!',
+                    showHideTransition: 'fade',
+                    icon: 'error',
+                    loader: true,
+                });
+            }else{
+                $.toast({
+                    heading: 'Alerta',
+                    text: data,
+                    showHideTransition: 'fade',
+                    icon: 'error',
+                    loader: true,
+                });
+            }
+            onload();
+            permitir = 0;
+        },
+        error: function(err){
+            $.toast({
+                heading: 'Alerta',
+                text: 'Ocorreu um problema de rede tente novamente mais tarde!',
+                showHideTransition: 'fade',
+                icon: 'error',
+                loader: true,
+            });
+            onload();
+            permitir = 0;
+        },
+        dataType: 'json',
+        url : 'app/api/artigo/artigo',
+        resetForm: false
+        }).submit();
+    });
+
 });
 
 //fileName

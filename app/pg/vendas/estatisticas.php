@@ -95,7 +95,7 @@
                                                                     <td><?php echo $value['registo']; ?></td>
                                                                     <td>
                                                                         <center>
-                                                                            <i data-toggle="modal" data-target="#visualizar-fatura<?php echo $value['id']; ?>" class="las la-eye" data-id></i>							
+                                                                            <i data-bs-toggle="modal" data-bs-target="#visualizar-fatura<?php echo $value['id']; ?>" class="las la-eye" data-id></i>							
                                                                         </center>
                                                                     </td>
                                                                 </tr>
@@ -211,7 +211,7 @@
                                         <?php
                                         }
                                     ?>
-                                    <p class="mb-3 text-right red-text">
+                                    <p class="mb-3 text-right theme-color">
                                         <b>
                                             <?php
                                             if($value['estado'] == 1){

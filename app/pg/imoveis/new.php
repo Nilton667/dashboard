@@ -164,7 +164,7 @@
 									<input onchange="fileName(this.value)" type="file" class="custom-file-input" id="image" name="img[]">
 									<label id="input-file-label" class="custom-file-label" for="image">Escolher arquivo(s)</label>
 								</div>
-								<div class="input-group-append" data-toggle="tooltip" title="Visualizar">
+								<div class="input-group-append" data-bs-toggle="tooltip" title="Visualizar">
 									<button id="visualizar-imagem" class="btn btn-outline-secondary" type="button">
 										<i class="las la-eye"></i>
 									</button>
@@ -192,7 +192,7 @@
 						<label>Youtube</label>
 						<div class="input-group mb-3">
 						<input type="url" class="form-control" placeholder="Link do seu video aqui" id="youtube" name="youtube" value="<?php if($edit){ echo $data[0]->youtube; } ?>">
-							<div class="input-group-append" data-toggle="tooltip" title="Testar">
+							<div class="input-group-append" data-bs-toggle="tooltip" title="Testar">
 								<button id="video-test" class="btn btn-outline-secondary" type="button">
 									<i class="lab la-youtube"></i>
 								</button>
@@ -525,17 +525,17 @@
 										<h5 class="mt-0 mb-2"><?= $userDataRegistered[0]['nome'].' '.$userDataRegistered[0]['sobrenome']; ?></h5>
 										
 										<p class="mb-1 d-flex align-items-center">
-											<i class="las la-id-card red-text" style="font-size: 1.45em;"></i> 
+											<i class="las la-id-card theme-color" style="font-size: 1.45em;"></i> 
 											<span style="font-size: .9em; font-weight: 500;" 
 											class="ml-1"><?= $userDataRegistered[0]['identificacao'] != '' ? $userDataRegistered[0]['identificacao'] : 'n/a'; ?></span>
 										</p>
 										<p class="mb-1 d-flex align-items-center">
-											<i class="las la-map red-text" style="font-size: 1.45em;"></i> 
+											<i class="las la-map theme-color" style="font-size: 1.45em;"></i> 
 											<span style="font-size: .9em; font-weight: 500;" 
 											class="ml-1"><?= $userDataRegistered[0]['morada'] != '' ? $userDataRegistered[0]['morada'] : 'n/a'; ?></span>
 										</p>
 										<p class="mb-1 d-flex align-items-center">
-											<i class="las la-phone red-text" style="font-size: 1.45em;"></i> 
+											<i class="las la-phone theme-color" style="font-size: 1.45em;"></i> 
 											<span style="font-size: .9em; font-weight: 500;" class="ml-1">
 											<?php 
 												if( $userDataRegistered[0]['telemovel'] != ''):
@@ -556,7 +556,7 @@
 											</span>
 										</p>
 										<p class="mb-0 d-flex align-items-center">
-											<i class="las la-transgender-alt red-text" style="font-size: 1.45em;"></i> 
+											<i class="las la-transgender-alt theme-color" style="font-size: 1.45em;"></i> 
 											<span style="font-size: .9em; font-weight: 500;" 
 											class="ml-1"><?= $userDataRegistered[0]['genero'] != '' ? $userDataRegistered[0]['genero'] : 'n/a'; ?></span>
 										</p>

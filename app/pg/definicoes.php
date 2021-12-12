@@ -122,7 +122,7 @@
                                     <div class="row">
                                         <div class="col-12 p-1">
                                             <div class="text-right"> 
-                                                <button type="button" class="p-1 btn btn-danger" data-toggle="modal" data-target="#modal-reset">Resetar</button>            
+                                                <button type="button" class="p-1 btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-reset">Resetar</button>            
                                                 <button type="button" class="p-1 btn btn-primary" id="systemSave">Salvar</button>  
                                             </div>
                                         </div>
@@ -201,7 +201,7 @@
                                         <div class="col-12 pt-1">
                                             <div class="text-right">              
                                                 <button type="button" class="p-1 btn btn-secondary" id="email-test">Testar</button>
-                                                <button type="button" class="p-1 btn btn-danger" data-toggle="modal" data-target="#modal-reset-email">Resetar</button> 
+                                                <button type="button" class="p-1 btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-reset-email">Resetar</button> 
                                                 <button type="button" class="p-1 btn btn-primary" id="email-save">Salvar</button>
                                             </div>
                                         </div>

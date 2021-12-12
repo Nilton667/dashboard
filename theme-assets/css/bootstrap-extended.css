@@ -750,7 +750,7 @@ select.form-control
     position: relative;
 }
 
-.collapse-icon [data-toggle='collapse']:after
+.collapse-icon [data-bs-toggle='collapse']:after
 {
     font-family: 'feather';
 
@@ -767,7 +767,7 @@ select.form-control
             transition: all 300ms linear 0s;
 }
 
-.collapse-icon [data-toggle='collapse']:before
+.collapse-icon [data-bs-toggle='collapse']:before
 {
     font-family: 'feather';
 

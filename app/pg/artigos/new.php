@@ -142,7 +142,7 @@
 									<input onchange="fileName(this.value)" type="file" class="custom-file-input" id="image" name="img[]">
 									<label id="input-file-label" class="custom-file-label" for="image">Escolher arquivo(s)</label>
 								</div>
-								<div class="input-group-append" data-toggle="tooltip" title="Visualizar">
+								<div class="input-group-append" data-bs-toggle="tooltip" title="Visualizar">
 									<button id="visualizar-imagem" class="btn btn-outline-secondary" type="button"><i class="las la-eye"></i></button>
 								</div>
 								</div>
@@ -361,6 +361,55 @@
 							</select>
 						</div>
 					</div>
+					
+					<?php
+						if($edit){
+							?>
+							<div class="col-12">
+								<div class="mb-2">	
+									<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add-preco-modal"><i class="las la-plus"></i> Preços personalizados</button>
+								</div>
+								<div class="mb-3">
+									<?php
+										$select_preco = DB\Mysql::select('SELECT * FROM artigos_precos WHERE id_artigo = :id_artigo', 
+											[
+												'id_artigo' => $data[0]->id,
+											]
+										);
+
+										if(is_array($select_preco)){
+											foreach ($select_preco as $key => $value) {
+												?>
+												<div class="card" style="border: #ebe9ee 1px solid;">
+													<div class="card-body">
+													<h5 class="card-title"><?= $value['nome']; ?></h5>
+														<h6 class="card-subtitle text-muted"><?= $value['localizacao']; ?></h6>
+														<p class="card-text">Lat: <?= $value['latitude']; ?>, Long: <?= $value['longitude']; ?></p>
+														<p class="card-text"><b>Preço: <?php echo get_moeda($value['preco']); ?></b></p>
+														<?php
+														if(!empty($value['link'])){
+															?>
+																<a target="_blank" class="btn btn-dark" style="color: #fff;" href="<?= $value['link']; ?>">Ir á loja</a>
+															<?php
+															}
+														?>
+														<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#remove-preco-modal-<?= $value['id']; ?>"><i class="las la-trash"></i> Eliminar</button>
+														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editar-preco-modal-<?= $value['id']; ?>"><i class="las la-pencil-alt"></i> Editar</button>
+													</div>
+												</div>
+												<?php
+											}
+										}else{
+											?>
+											<p class="lead">Este artigo não possui um preço personalizado!</p>
+											<?php
+										}
+									?>
+								</div>
+							</div>
+							<?php
+						}
+					?>
 
 				</div>
 
@@ -378,6 +427,164 @@
 		</form>
 
 	</div>
+</div>
+
+<?php
+	if(isset($select_preco) && is_array($select_preco)){
+		foreach ($select_preco as $key => $value) {
+		?>
+			<!-- remover preco -->
+			<div class="modal fade" id="remove-preco-modal-<?= $value['id']; ?>" tabindex="-1"  role="dialog" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form method="POST" id="remove-preco-form-<?= $value['id']; ?>">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+								<input type="hidden" name="remove_preco" value="true">
+								<input type="hidden" name="id" value="<?= $value['id']; ?>">
+
+								<p class="lead text-center">Pretende mesmo eliminar este precário?</p>
+								
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+								<button type="button" data-id="<?= $value['id']; ?>" class="remove-preco btn btn-danger">Eliminar</button>
+							</div>			
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- editar preco -->
+			<div class="modal fade" id="editar-preco-modal-<?= $value['id']; ?>" tabindex="-1"  role="dialog" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form method="POST" id="edit-preco-form-<?= $value['id']; ?>">
+							<div class="modal-header">
+							<h5 class="modal-title"><i class="las la-balance-scale la-2x"></i> Editar preço personalizado</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+								<input type="hidden" name="editar_preco" value="true">
+								<input type="hidden" name="id" value="<?= $value['id']; ?>">
+
+								<div class="form-group">
+									<label for="edit-preco-nome-<?= $value['id']; ?>">Nome</label>
+									<input value="<?= $value['nome']; ?>" type="text" name="nome" class="form-control" id="edit-preco-nome-<?= $value['id']; ?>" placeholder="Ex: Xiame / Preço Anterior.. .">
+								</div>
+
+								<div class="form-group">
+									<label for="edit-preco-localizacao-<?= $value['id']; ?>">Localização</label>
+									<input value="<?= $value['localizacao']; ?>" type="text" name="localizacao" class="form-control" id="edit-preco-localizacao-<?= $value['id']; ?>" placeholder="Ex: Projeto nova vida.. .">
+								</div>
+
+								<div class="row">
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label for="edit-preco-latitude-<?= $value['id']; ?>">Latitude</label>
+											<input value="<?= $value['latitude']; ?>" type="number" name="latitude" class="form-control" id="edit-preco-latitude-<?= $value['id']; ?>" placeholder="Ex: 1111111111">
+										</div>
+									</div>
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label for="edit-preco-longitude-<?= $value['id']; ?>">Longitude</label>
+											<input value="<?= $value['longitude']; ?>" type="number" name="longitude" class="form-control" id="edit-preco-longitude-<?= $value['id']; ?>" placeholder="Ex: -1111111111">
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="edit-preco-preco-<?= $value['id']; ?>">Preço</label>
+									<input type="number" class="form-control" id="edit-preco-preco-<?= $value['id']; ?>" name="preco" value="<?= $value['preco']; ?>">
+								</div>
+
+								<div class="form-group">
+									<label for="preco-preco">Url do artigo (opcional)</label>
+									<input type="url" class="form-control" id="edit-preco-link" name="link" placeholder="https://inovatis.ao/artigo/1" value="<?= $value['link']; ?>">
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+								<button type="button" data-id="<?= $value['id']; ?>" class="edit-preco btn btn-primary">Editar</button>
+							</div>			
+						</form>
+					</div>
+				</div>
+			</div>
+		<?php
+		}
+	}
+?>
+
+<!-- Adicionar preco -->
+<div class="modal fade" id="add-preco-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+		<form method="POST" id="add-preco-form" enctype="multipart/form-data">
+			<div class="modal-header">
+				<h5 class="modal-title"><i class="las la-balance-scale la-2x"></i> Preço personalizado</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<input type="hidden" name="add_preco" value="true">
+				<input type="hidden" name="id_artigo" value="<?= $data[0]->id; ?>">
+				<input type="hidden" name="id_usuario" value="<?= $userData->id; ?>">
+
+				<div class="form-group">
+					<label for="preco-nome">Nome</label>
+					<input type="text" name="nome" class="form-control" id="preco-nome" placeholder="Ex: Xiame / Preço Anterior.. .">
+				</div>
+
+				<div class="form-group">
+					<label for="preco-localizacao">Localização</label>
+					<input type="text" name="localizacao" class="form-control" id="preco-localizacao" placeholder="Ex: Projeto nova vida.. .">
+				</div>
+
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<label for="preco-latitude">Latitude</label>
+							<input type="number" name="latitude" class="form-control" id="preco-latitude" placeholder="Ex: 1111111111">
+						</div>
+					</div>
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<label for="preco-longitude">Longitude</label>
+							<input type="number" name="longitude" class="form-control" id="preco-longitude" placeholder="Ex: -1111111111">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="preco-preco">Preço</label>
+					<input type="number" class="form-control" id="preco-preco" name="preco" value="0">
+				</div>
+
+				<div class="form-group">
+					<label for="preco-preco">Url do artigo (opcional)</label>
+					<input type="url" class="form-control" id="preco-link" name="link" placeholder="https://inovatis.ao/artigo/1">
+				</div>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+				<button id="add-preco" type="button" class="btn btn-primary">Adicionar</button>
+			</div>			
+		</form>
+    </div>
+  </div>
 </div>
 
 <!-- Visualizar imagem -->

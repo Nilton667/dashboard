@@ -46,7 +46,7 @@
 						<div class="heading-elements-ignore d-flex justify-content-end">
 							<ul class="list-inline mb-0">
 								<li>
-									<a id="modal-add" data-toggle="modal" data-target="#modal-add-item" class="mr-2">
+									<a id="modal-add" data-bs-toggle="modal" data-bs-target="#modal-add-item" class="mr-2">
 										<i class="ft-plus"></i>
 									</a>
 								</li>
@@ -120,8 +120,8 @@
 													class="custom-control-label" 
 													for="cronometro-<?php echo $mostra->id; ?>"></label>
 												</div>
-												<i class="las la-eye pointer" data-toggle="modal" 
-												data-target="#modal-view-<?= $mostra->id; ?>" 
+												<i class="las la-eye pointer" data-bs-toggle="modal" 
+												data-bs-target="#modal-view-<?= $mostra->id; ?>" 
 												style="font-size: 1.5em; margin-left: 5px; color: #fff;"></i>
 
 												<p class="p-1 m-0 lead text-white contador-title text-uppercase" style="font-weight: 500;">
